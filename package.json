@@ -1,0 +1,38 @@
+{
+  "name": "eqson",
+  "description": "JSON that optimized to have a same reference when a same contents",
+  "version": "0.0.0",
+  "author": "Nao Yonamine <mohayonao@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/mohayonao/eqson/issues"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "mocha": "^3.3.0",
+    "npm-run-all": "^4.0.2",
+    "run-with-mocha": "^1.1.0"
+  },
+  "files": [
+    "package.json",
+    "README.md",
+    "index.js"
+  ],
+  "homepage": "https://github.com/mohayonao/eqson/",
+  "keywords": [
+    "json"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohayonao/eqson.git"
+  },
+  "scripts": {
+    "lint": "eslint index.js test",
+    "postversion": "git push && git push --tags",
+    "prepublish": "npm-run-all lint test",
+    "preversion": "npm-run-all lint test",
+    "test": "mocha",
+    "travis": "npm-run-all lint test"
+  }
+}
