@@ -14,7 +14,6 @@ $ npm install --save eqson
 ## Example
 
 ```js
-const assert = require("assert");
 const eqson = require("eqson");
 
 const a = { foo: [ 100 ], bar: [ 100 ], baz: [ 10, [ 100 ] ] };
@@ -30,8 +29,8 @@ assert.deepEqual(a, b);
 `b.foo` and `b.bar`, `b.baz[1]` have a same reference.
 
 ```js
-assert.equal(b.foo, b.bar);
-assert.equal(b.foo, b.baz[1]);
+assert(b.foo === b.bar);
+assert(b.foo === b.baz[1]);
 ```
 
 ## License
