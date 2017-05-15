@@ -1,7 +1,7 @@
 "use strict";
 
 function eqson(node) {
-  const walker = {
+  var walker = {
     nodeToKey: new Map(),
     keyToNode: new Map(),
   };
@@ -18,7 +18,7 @@ function walk(walker, node) {
     return walker.keyToNode.get(walker.nodeToKey.get(node));
   }
 
-  const key = JSON.stringify(node);
+  var key = JSON.stringify(node);
 
   walker.nodeToKey.set(node, key);
 
@@ -27,9 +27,11 @@ function walk(walker, node) {
   }
 
   if (Array.isArray(node)) {
-    node = node.map(item => walk(walker, item));
+    node = node.map(function(item) {
+      return walk(walker, item);
+    });
   } else {
-    node = Object.keys(node).reduce((obj, key) => {
+    node = Object.keys(node).reduce(function(obj, key) {
       obj[key] = walk(walker, node[key]);
       return obj;
     }, {});
@@ -41,7 +43,7 @@ function walk(walker, node) {
 }
 
 function isScalar(node) {
-  const type = typeof node;
+  var type = typeof node;
 
   return node == null || type === "number" || type === "boolean" || type === "string";
 }
